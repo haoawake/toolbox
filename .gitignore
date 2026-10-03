@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# 由 npm run snapshot 生成，CI 每次部署都会重新拉取
+public/data/
+*.log
+.DS_Store

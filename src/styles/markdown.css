@@ -1,0 +1,391 @@
+/* GitHub 渲染的 README / 更新说明 */
+
+.markdown-body {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+
+.markdown-body > :first-child,
+.markdown-body article > :first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body :where(p, ul, ol, blockquote, table, details, .md-code, .markdown-alert, dl) {
+  margin: 0 0 18px;
+}
+
+.markdown-body :where(h1, h2, h3, h4, h5, h6) {
+  margin: 34px 0 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.markdown-body .markdown-heading {
+  position: relative;
+  margin: 34px 0 14px;
+}
+
+.markdown-body .markdown-heading :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+}
+
+.markdown-body h1 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.markdown-body h2 {
+  padding-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 800;
+  border-bottom: 1px solid var(--line);
+}
+
+.markdown-body h3 {
+  font-size: 18px;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body :where(h5, h6) {
+  font-size: 14.5px;
+  color: var(--text-2);
+}
+
+.markdown-body [id] {
+  scroll-margin-top: calc(var(--topbar-h) + 20px);
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0.35em;
+  left: -28px;
+  padding: 4px;
+  color: var(--text-3);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.markdown-body .markdown-heading:hover .anchor,
+.markdown-body .anchor:focus-visible {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .markdown-body .anchor {
+    display: none;
+  }
+}
+
+.markdown-body svg.octicon {
+  display: inline-block;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-body a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+
+.markdown-body a:hover {
+  text-decoration-color: currentColor;
+}
+
+.markdown-body a.anchor,
+.markdown-body a:has(> img:only-child) {
+  text-decoration: none;
+}
+
+.markdown-body strong {
+  font-weight: 700;
+}
+
+.markdown-body :where(ul, ol) {
+  padding-left: 1.5em;
+}
+
+.markdown-body li + li {
+  margin-top: 0.35em;
+}
+
+.markdown-body li > :where(ul, ol) {
+  margin: 0.35em 0 0;
+}
+
+.markdown-body li > p {
+  margin: 0.35em 0;
+}
+
+.markdown-body li::marker {
+  color: var(--text-3);
+}
+
+.markdown-body .task-list-item {
+  list-style: none;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.5em 0 -1.3em;
+  vertical-align: middle;
+  accent-color: var(--accent);
+}
+
+.markdown-body blockquote {
+  padding: 10px 18px;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border-left: 3px solid var(--accent-line);
+  border-radius: 0 12px 12px 0;
+}
+
+.markdown-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body code {
+  padding: 0.15em 0.45em;
+  border-radius: 6px;
+  font-size: 0.86em;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+}
+
+.markdown-body pre {
+  margin: 0;
+  padding: 16px 18px;
+  overflow: auto;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  scrollbar-width: thin;
+}
+
+.markdown-body pre code {
+  padding: 0;
+  font-size: inherit;
+  white-space: pre;
+  background: none;
+  border: 0;
+}
+
+.markdown-body .md-code {
+  position: relative;
+}
+
+.markdown-body .md-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--text-3);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
+}
+
+.markdown-body .md-code:hover .md-copy,
+.markdown-body .md-copy:focus-visible,
+.markdown-body .md-copy.is-done {
+  opacity: 1;
+}
+
+.markdown-body .md-copy:hover {
+  color: var(--text);
+}
+
+.markdown-body .md-copy.is-done {
+  color: var(--ok);
+}
+
+@media (hover: none) {
+  .markdown-body .md-copy {
+    opacity: 1;
+  }
+}
+
+.markdown-body table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.markdown-body :where(th, td) {
+  padding: 9px 14px;
+  vertical-align: top;
+  border: 1px solid var(--line-2);
+}
+
+.markdown-body th {
+  font-weight: 650;
+  text-align: left;
+  background: var(--surface-2);
+}
+
+.markdown-body tr:nth-child(2n) td {
+  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
+}
+
+/* 「| | |」这种空表头只是为了排版，藏起来 */
+.markdown-body thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  height: 1px;
+  margin: 32px 0;
+  border: 0;
+  background: var(--line-2);
+}
+
+.markdown-body details {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.markdown-body summary {
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.markdown-body .markdown-alert {
+  padding: 12px 18px;
+  border-left: 3px solid var(--info);
+  border-radius: 0 12px 12px 0;
+  background: var(--info-soft);
+}
+
+.markdown-body .markdown-alert > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body .markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px !important;
+  font-weight: 700;
+  color: var(--info);
+}
+
+.markdown-body .markdown-alert-tip {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.markdown-body .markdown-alert-tip .markdown-alert-title {
+  color: var(--ok);
+}
+
+.markdown-body .markdown-alert-important {
+  border-color: var(--purple);
+  background: color-mix(in srgb, var(--purple) 9%, transparent);
+}
+
+.markdown-body .markdown-alert-important .markdown-alert-title {
+  color: var(--purple);
+}
+
+.markdown-body .markdown-alert-warning {
+  border-color: var(--warn);
+  background: var(--warn-soft);
+}
+
+.markdown-body .markdown-alert-warning .markdown-alert-title {
+  color: var(--warn);
+}
+
+.markdown-body .markdown-alert-caution {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+.markdown-body .markdown-alert-caution .markdown-alert-title {
+  color: var(--danger);
+}
+
+/* 代码高亮（GitHub 的 pl-* 类名） */
+.markdown-body .pl-c {
+  color: var(--hl-comment);
+}
+
+.markdown-body :is(.pl-k, .pl-mh) {
+  color: var(--hl-keyword);
+}
+
+.markdown-body :is(.pl-s, .pl-pds, .pl-sr) {
+  color: var(--hl-string);
+}
+
+.markdown-body :is(.pl-en, .pl-e) {
+  color: var(--hl-func);
+}
+
+.markdown-body .pl-c1 {
+  color: var(--hl-const);
+}
+
+.markdown-body .pl-ent {
+  color: var(--hl-entity);
+}
+
+.markdown-body .pl-v {
+  color: var(--hl-var);
+}
+
+.markdown-body .pl-md {
+  color: var(--danger);
+}
+
+.markdown-body .pl-mi1 {
+  color: var(--ok);
+}
+
+/* 更新说明里字号小一点 */
+.rel-notes {
+  font-size: 14.5px;
+  line-height: 1.8;
+}
+
+.markdown-body.rel-notes :is(h1, h2) {
+  margin: 22px 0 10px;
+  padding-bottom: 0;
+  font-size: 17px;
+  border-bottom: 0;
+}
+
+.markdown-body.rel-notes h3 {
+  margin: 18px 0 8px;
+  font-size: 15px;
+}

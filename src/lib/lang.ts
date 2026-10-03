@@ -1,0 +1,30 @@
+// GitHub linguist 的语言配色
+const COLORS: Record<string, string> = {
+  Python: '#3572A5',
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  HTML: '#e34c26',
+  CSS: '#663399',
+  Vue: '#41b883',
+  Svelte: '#ff3e00',
+  Rust: '#dea584',
+  Go: '#00ADD8',
+  Java: '#b07219',
+  Kotlin: '#A97BFF',
+  Swift: '#F05138',
+  'C++': '#f34b7d',
+  C: '#555555',
+  'C#': '#178600',
+  Shell: '#89e051',
+  PowerShell: '#012456',
+  Batchfile: '#C1F12E',
+  Dart: '#00B4AB',
+  PHP: '#4F5D95',
+  Lua: '#000080',
+  Ruby: '#701516',
+  'Jupyter Notebook': '#DA5B0B',
+  'Objective-C': '#438eff',
+  GDScript: '#355570',
+};
+
+export const langColor = (lang: string) => COLORS[lang] ?? '#8b90a0';

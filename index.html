@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>皓子不困的工具库</title>
+    <meta name="description" content="皓子不困的 GitHub 小工具合集：自动同步最新版本，一键下载，跟着步骤就能装好。" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <meta property="og:title" content="皓子不困的工具库" />
+    <meta property="og:description" content="熬夜做的小工具都在这儿。挑一个，一键下载，跟着步骤就能装好。" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://api.github.com" crossorigin />
+    <script>
+      // 在首帧之前套用用户选过的主题，避免闪烁
+      (function () {
+        try {
+          var t = localStorage.getItem('toolbox:theme');
+          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>这个页面需要开启 JavaScript。也可以直接去 GitHub 查看：https://github.com/haoawake</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

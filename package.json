@@ -1,0 +1,28 @@
+{
+  "name": "haoawake-toolbox",
+  "private": true,
+  "version": "1.0.0",
+  "description": "皓子不困的工具库：自动收录 GitHub 上的项目，获取最新 Release，一键下载并跟着步骤装好。",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "snapshot": "node scripts/build-snapshot.ts",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-serif-sc": "^5.3.0",
+    "dompurify": "^3.4.16",
+    "lucide-react": "^1.49.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "owner": "haoawake",
+  "selfRepo": "haoawake/toolbox",
+  "site": {
+    "title": "皓子不困的工具库",
+    "highlight": "不困",
+    "eyebrow": "HAOAWAKE · TOOLBOX",
+    "tagline": "熬夜做的小工具都在这儿。挑一个，一键下载，跟着步骤就能装好。"
+  },
+  "includeForks": false,
+  "hidden": [],
+  "extraRepos": [],
+  "mirror": "",
+  "liveRefreshMinutes": 10,
+  "projects": {
+    "live-interpreter": {
+      "displayName": "同声传译",
+      "tagline": "离线、低延迟的英译中同声传译：实时识别网课、会议、视频里的英文，用本地模型翻成中文，在置顶悬浮窗里显示双语字幕。音频全程不离开电脑。",
+      "appName": "同声传译",
+      "requirements": [
+        "Windows 10 / 11，64 位",
+        "内存 8 GB 以上，推荐 16 GB",
+        "最好有独立显卡（NVIDIA 驱动 R580 及以上，或 AMD / Intel 显卡）；没有也能用 CPU 翻译，每句慢一点",
+        "约 2.5 GB 磁盘空间，只有第一次运行需要联网"
+      ],
+      "install": {
+        "windows": [
+          {
+            "title": "解压到任意位置",
+            "body": "在「下载」文件夹里右键 `{asset}` →「全部解压缩…」，选一个以后不会删的位置（路径可以有中文），点「提取」。"
+          },
+          {
+            "title": "运行「同声传译.exe」",
+            "body": "打开解压出来的文件夹，双击 `同声传译.exe`。第一次运行会列出需要下载的组件（约 2 GB 的模型），支持断点续传，还能顺手在桌面和开始菜单创建快捷方式。",
+            "tip": "国内网络下载慢的话，勾选「国内网络」，翻译模型会改从 hf-mirror.com 下载。"
+          },
+          {
+            "title": "开始同传",
+            "body": "下载完成后会出现一个置顶的字幕悬浮窗。播放网课、会议或视频就能看到中英双语字幕：白色是定稿的译文，蓝色是正在说的句子。右键或点「设置」可以切换音频来源、识别模式和术语表。"
+          }
+        ]
+      },
+      "troubleshooting": {
+        "windows": [
+          {
+            "title": "悬浮窗出来了，但没有字幕",
+            "body": "先看左上角的音量条有没有跳动，再在右键菜单的「音频来源」里确认设备。默认的「跟随默认播放设备」会在插拔耳机时自动切换。"
+          },
+          {
+            "title": "翻译突然变慢",
+            "body": "显卡被别的程序（游戏、Blender 等）占满时会变慢，可以在右键菜单里关掉「使用显卡（GPU）」改用 CPU。运行日志在 `logs\\app.log`。"
+          }
+        ]
+      }
+    },
+    "neu-helper": {
+      "displayName": "NEU Helper",
+      "icon": "gui/icon-128.png",
+      "appName": "NEU Helper",
+      "requirements": [
+        "Windows 10 / 11，或 Apple 芯片（M 系列）的 Mac",
+        "一个 Canvas Access Token（安装步骤里会教你生成）",
+        "AI 简报和对话需要本机装好 Claude Code；仪表盘、邮箱、备忘录不需要"
+      ],
+      "install": {
+        "windows": [
+          {
+            "title": "解压到一个长期存放的位置",
+            "body": "在「下载」文件夹里右键 `{asset}` →「全部解压缩…」，选一个以后不会删的位置，比如 `D:\\Apps\\NEU Helper`。程序会在这个文件夹里保存邮件、对话和设置，所以别留在「下载」里。"
+          },
+          {
+            "title": "生成 Canvas 令牌",
+            "body": "登录 Canvas → 左侧 Account → Settings → 点「+ New Access Token」，用途随便填，生成后复制那串令牌（形如 `14523~xxxx`）。令牌只显示一次，先存好。"
+          },
+          {
+            "title": "运行一次安装脚本",
+            "body": "打开解压后的文件夹，在空白处右键 →「在终端中打开」（Windows 10 请按住 Shift 再右键，选「在此处打开 PowerShell 窗口」）。粘贴下面这行，把引号里的内容换成你的令牌，回车。",
+            "code": "powershell -ExecutionPolicy Bypass -File setup.ps1 -Token \"你的令牌\""
+          },
+          {
+            "title": "打开 NEU Helper",
+            "body": "脚本会保存令牌、注册 Canvas MCP，并创建桌面和开机快捷方式。看到完成提示后，双击桌面上的「NEU Helper」就能用了。",
+            "tip": "文件夹里会生成一个 `CLAUDE.md`，记得把里面的课程表换成你自己的课，每日简报才会讲对课程。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "解压并放进「应用程序」",
+            "body": "在「下载」里双击 `{asset}`，会解压出「NEU Helper」应用。把它拖进「应用程序」文件夹。"
+          },
+          {
+            "title": "生成 Canvas 令牌",
+            "body": "登录 Canvas → 左侧 Account → Settings → 点「+ New Access Token」，用途随便填，生成后复制那串令牌（形如 `14523~xxxx`）。令牌只显示一次，先存好。"
+          },
+          {
+            "title": "在终端里运行一次安装脚本",
+            "body": "打开「终端」（在启动台里搜索“终端”），粘贴下面这行，把引号里的内容换成你的令牌，回车。",
+            "code": "\"/Applications/NEU Helper.app/Contents/MacOS/setup_mac.sh\" --token \"你的令牌\""
+          },
+          {
+            "title": "第一次打开",
+            "body": "打开「应用程序」，按住 Control 键点按「NEU Helper」→ 选「打开」→ 在弹窗里再点「打开」。邮箱可以在应用里的「设置 → 邮箱」配置。",
+            "tip": "macOS 15 起菜单里可能没有「打开」：先双击一次，再去「系统设置 → 隐私与安全性」，在页面底部点「仍要打开」。"
+          }
+        ]
+      }
+    },
+    "ipad-remote-desktop": {
+      "displayName": "iPad 远程桌面",
+      "tagline": "在外面用 iPad（手机流量也行）打开 Safari，就能看到并操控家里的 Windows 电脑：点鼠标、打字、开网址、传文件。iPad 不用装专门的 App，远程时电脑本地还会显示隐私屏。",
+      "requirements": [
+        "一台装着 Windows 的电脑，Python 3.10 或更新版本",
+        "电脑和 iPad 都装好 Tailscale，并登录同一个账号",
+        "不需要公网 IP，也不用改路由器"
+      ],
+      "install": {
+        "source": [
+          {
+            "title": "解压到一个固定的位置",
+            "body": "右键下载好的源码压缩包 →「全部解压缩…」，放到一个以后不会删的文件夹里。"
+          },
+          {
+            "title": "装好 Python 和依赖",
+            "body": "先安装 Python 3.10 或更新版本（python.org），安装时记得勾选「Add python.exe to PATH」。然后双击文件夹里的 `安装依赖.bat`。"
+          },
+          {
+            "title": "装好 Tailscale",
+            "body": "在电脑上安装 Tailscale 并登录；iPad 上也从 App Store 装 Tailscale，登录同一个账号。"
+          },
+          {
+            "title": "启动远程桌面",
+            "body": "双击 `启动远程桌面.bat`。第一次运行会生成随机密码、自动下载 cloudflared，并在窗口里显示登录密码和 Tailscale 地址（也会写进 `访问地址.txt`）。",
+            "tip": "想开机自动启动的话，双击 `开机自启-开启.bat`。全程不需要管理员权限。"
+          },
+          {
+            "title": "在 iPad 上连上它",
+            "body": "打开 Tailscale App 确认已连接，再用 Safari 打开窗口里显示的 Tailscale 地址，输入密码并勾选「记住 30 天」。最后点 Safari 的「分享 → 添加到主屏幕」，以后从图标打开就跟 App 一样。"
+          }
+        ]
+      }
+    },
+    "career-radar": {
+      "displayName": "Career Radar",
+      "tagline": "自托管的求职工作台：直接从 603 家雇主的官方招聘系统（Workday、Greenhouse、Ashby 等）聚合约 14.5 万个美国科技岗位，标出职级和签证担保信号，还附带 ATS 友好的简历生成器。"
+    }
+  }
+}

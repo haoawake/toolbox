@@ -1,0 +1,57 @@
+name: 构建并发布工具库
+
+on:
+  push:
+    branches: [main]
+  # 每 3 小时重新抓一次 GitHub 数据（网页打开时也会实时检查新版本，这里只是兜底）
+  schedule:
+    - cron: '23 */3 * * *'
+  workflow_dispatch:
+  # 其他仓库发版后可以通过 repository_dispatch 立刻触发刷新，见 README
+  repository_dispatch:
+    types: [refresh]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: 拉取项目、Release、README 和图标
+        run: npm run snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
