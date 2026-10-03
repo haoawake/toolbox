@@ -126,7 +126,7 @@ function ProjectView({ project: p, routeTab }: { project: ViewProject; routeTab:
       </nav>
 
       <header className="p-head">
-        <ProjectIcon project={p} size={88} />
+        <ProjectIcon project={p} size={96} />
         <div className="p-head-main">
           <h1 className="p-title">{p.displayName}</h1>
           <a className="p-repo mono" href={p.url} target="_blank" rel="noopener noreferrer">

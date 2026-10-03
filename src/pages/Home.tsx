@@ -1,6 +1,5 @@
 import { Catalog, type CatalogState } from '../components/Catalog';
 import { Hero } from '../components/Hero';
-import { HowItWorks } from '../components/HowItWorks';
 import type { ViewProject } from '../lib/projects';
 import type { Owner } from '../types';
 
@@ -24,7 +23,6 @@ export function Home({
   return (
     <main className="home">
       <Hero owner={owner} projects={projects} loading={loading} />
-      <HowItWorks />
       <Catalog projects={projects} loading={loading} failed={failed} onRetry={onRetry} state={catalog} onChange={onCatalog} />
     </main>
   );

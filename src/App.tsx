@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { CatalogState } from './components/Catalog';
 import { Footer } from './components/Footer';
-import { Starfield } from './components/Starfield';
 import { ToastProvider } from './components/Toast';
 import { TopBar } from './components/TopBar';
 import { config } from './config';
 import { useRoute } from './lib/router';
-import { useTheme } from './lib/theme';
 import { PlatformContext, usePlatformDetection } from './lib/usePlatform';
 import { useToolbox } from './lib/useToolbox';
 import { Home } from './pages/Home';
@@ -14,7 +12,6 @@ import { ProjectPage } from './pages/ProjectPage';
 
 export default function App() {
   const platform = usePlatformDetection();
-  const [theme, toggleTheme] = useTheme();
   const route = useRoute();
   const { loading, owner, projects, sync, refresh, selfRepo } = useToolbox();
   // 放在这里而不是首页里，从详情页返回时搜索和筛选还在
@@ -28,12 +25,14 @@ export default function App() {
   return (
     <PlatformContext value={platform}>
       <ToastProvider>
+        {/* 玻璃需要身后有颜色：几团很淡的彩色光，固定在页面背后缓慢漂移 */}
         <div className="backdrop" aria-hidden="true">
-          <div className="backdrop-glow" />
-          <Starfield theme={theme} />
-          <div className="backdrop-grain" />
+          <span className="blob b1" />
+          <span className="blob b2" />
+          <span className="blob b3" />
+          <span className="blob b4" />
         </div>
-        <TopBar sync={sync} onRefresh={refresh} theme={theme} onToggleTheme={toggleTheme} ownerUrl={owner.url} />
+        <TopBar sync={sync} onRefresh={refresh} owner={owner} />
         <div id="main">
           {route.page === 'home' ? (
             <Home

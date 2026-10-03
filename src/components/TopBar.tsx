@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { LoaderCircle, Moon, RefreshCw, Sun } from 'lucide-react';
+import { LoaderCircle, RefreshCw } from 'lucide-react';
 import { config } from '../config';
 import { formatTime, timeAgo } from '../lib/format';
 import { homeHref } from '../lib/router';
-import type { Theme } from '../lib/theme';
 import { useNow } from '../lib/useNow';
 import type { SyncInfo } from '../lib/useToolbox';
+import type { Owner } from '../types';
 import { GithubIcon } from './icons';
 import { Logo } from './Logo';
 
@@ -34,19 +34,8 @@ function describe(sync: SyncInfo, now: number) {
   }
 }
 
-export function TopBar({
-  sync,
-  onRefresh,
-  theme,
-  onToggleTheme,
-  ownerUrl,
-}: {
-  sync: SyncInfo;
-  onRefresh: () => void;
-  theme: Theme;
-  onToggleTheme: (origin: { x: number; y: number }) => void;
-  ownerUrl: string;
-}) {
+/** 悬浮在页面顶部的玻璃胶囊导航 */
+export function TopBar({ sync, onRefresh, owner }: { sync: SyncInfo; onRefresh: () => void; owner: Owner }) {
   const [scrolled, setScrolled] = useState(false);
   const now = useNow(30_000);
 
@@ -63,40 +52,37 @@ export function TopBar({
 
   return (
     <header className={`topbar ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="container topbar-inner">
-        <a href={homeHref} className="brand" aria-label={`${config.site.title}首页`}>
-          <Logo size={30} />
-          <span className="brand-name">{config.site.title}</span>
-        </a>
+      <div className="container">
+        <nav className="topbar-inner glass" aria-label="主导航">
+          <a href={homeHref} className="brand" aria-label={`${config.site.title}首页`}>
+            <Logo size={32} />
+            <span className="brand-name">{config.site.title}</span>
+          </a>
 
-        <button
-          type="button"
-          className={`sync-pill tone-${s.tone}`}
-          onClick={onRefresh}
-          disabled={busy || limited}
-          title={s.detail}
-          aria-label={`${s.text}。${s.detail}`}
-        >
-          <span className="sync-dot" aria-hidden="true" />
-          <span className="sync-text">{s.text}</span>
-          {busy ? <LoaderCircle size={14} className="spin" aria-hidden="true" /> : <RefreshCw size={14} aria-hidden="true" />}
-        </button>
+          <button
+            type="button"
+            className={`sync-pill tone-${s.tone}`}
+            onClick={onRefresh}
+            disabled={busy || limited}
+            title={s.detail}
+            aria-label={`${s.text}。${s.detail}`}
+          >
+            <span className="sync-dot" aria-hidden="true" />
+            <span className="sync-text">{s.text}</span>
+            {busy ? <LoaderCircle size={14} className="spin" aria-hidden="true" /> : <RefreshCw size={13} aria-hidden="true" />}
+          </button>
 
-        <a className="icon-btn" href={ownerUrl} target="_blank" rel="noopener noreferrer" aria-label="作者的 GitHub 主页" title="作者的 GitHub 主页">
-          <GithubIcon size={18} />
-        </a>
-        <button
-          type="button"
-          className="icon-btn"
-          onClick={(e) => {
-            const r = e.currentTarget.getBoundingClientRect();
-            onToggleTheme({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
-          }}
-          aria-label={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
-          title={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
-        >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+          <a
+            className="icon-btn"
+            href={owner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="作者的 GitHub 主页"
+            title="作者的 GitHub 主页"
+          >
+            <GithubIcon size={18} />
+          </a>
+        </nav>
       </div>
     </header>
   );

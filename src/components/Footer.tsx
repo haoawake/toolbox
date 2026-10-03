@@ -42,7 +42,8 @@ export function Footer({ owner, sync, selfRepo }: { owner: Owner; sync: SyncInfo
         </div>
       </div>
       <div className="container footer-bottom">
-        © {new Date().getFullYear()} {owner.name} · 夜里写代码，白天也不困
+        <span>© {new Date().getFullYear()} {owner.name}</span>
+        {owner.bio && <span className="footer-motto">{owner.bio}</span>}
       </div>
     </footer>
   );

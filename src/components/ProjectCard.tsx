@@ -38,7 +38,7 @@ export function ProjectCard({ project: p, index }: { project: ViewProject; index
           </h3>
           <div className="card-repo mono">{p.fullName}</div>
         </div>
-        {p.installable && p.latest ? <span className="badge gold mono">{p.latest.tag}</span> : <span className="badge">源码</span>}
+        {p.installable && p.latest ? <span className="badge ver mono">{p.latest.tag}</span> : <span className="badge">源码</span>}
       </div>
 
       <p className={`card-desc ${p.summary ? '' : 'is-empty'}`}>
@@ -89,16 +89,18 @@ export function ProjectCard({ project: p, index }: { project: ViewProject; index
         {quick ? (
           <DownloadLink
             asset={quick.asset}
-            className="card-dl"
+            className="get-btn"
             data-tip={quickLabel}
             aria-label={`${p.displayName}：${quickLabel}`}
             onDownload={(a) => notify(p, a)}
           >
-            <Download size={17} />
+            <Download size={14} strokeWidth={2.4} />
+            下载
           </DownloadLink>
         ) : (
-          <span className="card-go" aria-hidden="true">
-            <ArrowUpRight size={17} />
+          <span className="get-btn is-ghost" aria-hidden="true">
+            查看
+            <ArrowUpRight size={14} strokeWidth={2.4} />
           </span>
         )}
       </footer>

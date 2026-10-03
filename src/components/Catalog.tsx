@@ -93,10 +93,10 @@ export function Catalog({
   }, [projects, filter, query, sort]);
 
   return (
-    <section className="catalog container" aria-labelledby="catalog-title">
+    <section className="catalog container" id="catalog" aria-labelledby="catalog-title">
       <header className="catalog-head">
         <div>
-          <div className="section-kicker">THE COLLECTION</div>
+          <div className="section-kicker">COLLECTION</div>
           <h2 className="section-title" id="catalog-title">
             全部项目
             {!loading && <span className="count">{list.length === projects.length ? projects.length : `${list.length} / ${projects.length}`}</span>}
