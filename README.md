@@ -43,7 +43,6 @@
   "site": { "title": "皓子不困的工具库", "highlight": "不困", "tagline": "…" },
   "hidden": ["某个不想展示的仓库"],
   "extraRepos": ["别的组织/某个仓库"],   // 把不在自己名下的仓库也加进来
-  "featured": "neu-helper",            // 可选：首页大卡片固定展示它（不填就展示最新发布的）
   "mirror": "",                        // 可选：下载加速前缀
   "projects": {
     "neu-helper": {

@@ -114,7 +114,6 @@ export interface ToolboxConfig {
   includeForks?: boolean;
   hidden?: string[];
   extraRepos?: string[];
-  featured?: string;
   selfRepo?: string;
   /** 下载加速前缀，例如 https://example.com/ ，留空则不显示 */
   mirror?: string;
