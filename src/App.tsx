@@ -13,7 +13,7 @@ import { ProjectPage } from './pages/ProjectPage';
 export default function App() {
   const platform = usePlatformDetection();
   const route = useRoute();
-  const { loading, owner, projects, sync, refresh, selfRepo } = useToolbox();
+  const { loading, owner, projects, data, selfRepo } = useToolbox();
   // 放在这里而不是首页里，从详情页返回时搜索和筛选还在
   const [catalog, setCatalog] = useState<CatalogState>({ filter: 'all', query: '', sort: 'recommended' });
 
@@ -32,15 +32,15 @@ export default function App() {
           <span className="blob b3" />
           <span className="blob b4" />
         </div>
-        <TopBar sync={sync} onRefresh={refresh} owner={owner} />
+        <TopBar owner={owner} />
         <div id="main">
           {route.page === 'home' ? (
             <Home
               owner={owner}
               projects={projects}
               loading={loading}
-              failed={sync.state === 'error'}
-              onRetry={refresh}
+              failed={data.state === 'error'}
+              onRetry={() => location.reload()}
               catalog={catalog}
               onCatalog={setCatalog}
             />
@@ -48,7 +48,7 @@ export default function App() {
             <ProjectPage projectKey={route.key} tab={route.tab} projects={projects} loading={loading} />
           )}
         </div>
-        <Footer owner={owner} sync={sync} selfRepo={selfRepo} />
+        <Footer owner={owner} data={data} selfRepo={selfRepo} />
       </ToastProvider>
     </PlatformContext>
   );

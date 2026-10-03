@@ -118,6 +118,5 @@ export interface ToolboxConfig {
   selfRepo?: string;
   /** 下载加速前缀，例如 https://example.com/ ，留空则不显示 */
   mirror?: string;
-  liveRefreshMinutes?: number;
   projects?: Record<string, ProjectOverride>;
 }

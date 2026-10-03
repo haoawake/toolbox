@@ -12,7 +12,7 @@
 ## 它做了什么
 
 - **自动收录**：我在 GitHub 上的所有公开仓库都会自动出现在这里（工具库自己除外），不用手动维护列表。
-- **自动获取最新版**：每个项目读取最新的 Release；网页打开时还会实时问一次 GitHub，刚发的新版本马上就能看到。
+- **每天自动更新**：每天自动抓一次所有项目的最新 Release，不用手动维护；访客打开网页直接看到最新一次更新的结果。
 - **一键下载**：自动识别访客的系统（Windows / macOS / Linux）和芯片（x64 / Apple 芯片），直接给出最合适的安装包。
 - **傻瓜式安装指南**：下载后自动切到安装步骤，每一步写清楚点哪里；常见问题（SmartScreen 拦截、macOS「已损坏」等）也有现成解法。
 - **像应用商店一样的详情页**：截图预览、README 介绍（优先显示中文版 `README.zh-CN.md`）、版本历史、SHA-256 校验值。
@@ -45,7 +45,6 @@
   "extraRepos": ["别的组织/某个仓库"],   // 把不在自己名下的仓库也加进来
   "featured": "neu-helper",            // 可选：首页大卡片固定展示它（不填就展示最新发布的）
   "mirror": "",                        // 可选：下载加速前缀
-  "liveRefreshMinutes": 10,            // 网页多久实时检查一次新版本
   "projects": {
     "neu-helper": {
       "displayName": "NEU Helper",     // 显示名
@@ -69,10 +68,13 @@
 
 ## 数据是怎么更新的
 
-1. **GitHub Actions**（`.github/workflows/deploy.yml`）在每次推送、每 3 小时、以及手动触发时运行 `npm run snapshot`：抓取所有仓库、Release、README 和图标，生成 `public/data/snapshot.json`，然后构建并发布到 GitHub Pages。
-2. **网页打开时**先显示这份快照（秒开），再实时向 GitHub 查询最新的仓库和 Release（10 分钟内复用缓存）。如果 GitHub 接口限流或者连不上，会安静地退回快照，下载不受影响。
+**GitHub Actions**（`.github/workflows/deploy.yml`）每天运行一次（北京时间凌晨 3 点），每次推送到 `main` 时也会运行：执行 `npm run snapshot` 抓取所有仓库、Release、README 和图标，生成 `public/data/snapshot.json`，然后构建并发布到 GitHub Pages。
 
-想在别的项目发版后**立刻**刷新快照，可以在那个项目的发版流程里加一步（需要一个有 `repo` 权限的 token，存成那个仓库的 secret `TOOLBOX_TOKEN`）：
+网页只读这份数据，不直接调用 GitHub 接口，所以访客再多也不会被限流。
+
+**发了新版本想马上显示？** 打开 [Actions 页面](https://github.com/haoawake/toolbox/actions/workflows/deploy.yml)，点「Run workflow」，一分钟左右就更新好了。
+
+也可以让别的项目发版后自动触发更新：在那个项目的发版流程里加一步（需要一个有 `repo` 权限的 token，存成那个仓库的 secret `TOOLBOX_TOKEN`）：
 
 ```yaml
 - run: gh api repos/haoawake/toolbox/dispatches -f event_type=refresh
@@ -80,7 +82,7 @@
     GH_TOKEN: ${{ secrets.TOOLBOX_TOKEN }}
 ```
 
-> 注意：GitHub 会在仓库 60 天没有任何活动后暂停定时任务。网页本身仍然会实时获取最新版本，不受影响；需要的话到 Actions 页面手动重新启用即可。
+> 注意：GitHub 会在仓库 60 天没有任何活动后暂停定时任务。到时候 Actions 页面会有提示，点一下重新启用即可。
 
 ## 本地开发
 

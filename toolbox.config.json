@@ -11,7 +11,6 @@
   "hidden": [],
   "extraRepos": [],
   "mirror": "",
-  "liveRefreshMinutes": 10,
   "projects": {
     "live-interpreter": {
       "displayName": "同声传译",

@@ -157,15 +157,15 @@ export function Catalog({
       ) : failed && projects.length === 0 ? (
         <Empty
           icon={<CloudOff size={24} />}
-          title="暂时连不上 GitHub"
+          title="数据暂时加载不出来"
           action={
             <button type="button" className="btn" onClick={onRetry}>
               <RefreshCw size={16} />
-              再试一次
+              刷新页面
             </button>
           }
         >
-          可能是网络不太稳定，或者 GitHub 接口暂时限流了。稍等一会儿再刷新看看。
+          可能是网络不太稳定，刷新一下页面试试。
         </Empty>
       ) : list.length === 0 ? (
         <Empty

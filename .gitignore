@@ -4,3 +4,5 @@ dist/
 public/data/
 *.log
 .DS_Store
+# 本地存放的各项目仓库，各自独立管理
+projects/

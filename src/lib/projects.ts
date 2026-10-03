@@ -1,8 +1,7 @@
 import { config } from '../config';
-import type { AssetOS, Project, ProjectOverride, Release, Snapshot } from '../types';
+import type { AssetOS, Project, ProjectOverride, Release } from '../types';
 import { groupAssets, pickAsset, type AssetGroups, type ClassifiedAsset } from './assets';
-import type { LiveData } from './github';
-import { latestRelease, overrideFor, sumDownloads } from './normalize';
+import { latestRelease, overrideFor } from './normalize';
 import type { Platform } from './platform';
 
 export interface ViewProject extends Project {
@@ -19,25 +18,6 @@ export interface ViewProject extends Project {
 }
 
 export type PanelTab = AssetOS | 'source';
-
-/** 实时数据为准，快照补上 README、图标和完整的下载总数 */
-export function mergeProjects(snapshot: Snapshot | null, live: LiveData | null): Project[] {
-  const snapProjects = snapshot?.projects ?? [];
-  if (!live) return snapProjects;
-  const byFull = new Map(snapProjects.map((p) => [p.fullName.toLowerCase(), p]));
-  return live.repos.map((info) => {
-    const k = info.fullName.toLowerCase();
-    const snap = byFull.get(k);
-    const releases = live.releases[k] ?? snap?.releases ?? [];
-    return {
-      ...info,
-      releases,
-      downloadsTotal: Math.max(snap?.downloadsTotal ?? 0, sumDownloads(releases)),
-      readmeHtml: snap ? snap.readmeHtml : undefined,
-      icon: snap?.icon ?? null,
-    };
-  });
-}
 
 const isUrl = (s: string) => /^https?:\/\//i.test(s);
 

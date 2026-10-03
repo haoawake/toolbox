@@ -203,69 +203,9 @@
   transform: scale(0.94);
 }
 
-.sync-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 36px;
-  padding: 0 13px;
-  flex: none;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-2);
-  background: var(--fill);
-  transition:
-    color 0.2s,
-    background 0.2s;
-}
-
-.sync-pill:hover:not(:disabled) {
-  color: var(--ink);
-  background: var(--fill-2);
-}
-
-.sync-pill svg {
-  opacity: 0.5;
-}
-
-.sync-dot {
-  width: 7px;
-  height: 7px;
-  flex: none;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 0 3px var(--ok-soft);
-}
-
-.tone-warn .sync-dot {
-  background: var(--warn);
-  box-shadow: 0 0 0 3px var(--warn-soft);
-}
-
-.tone-err .sync-dot {
-  background: var(--danger);
-  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.12);
-}
-
-.tone-busy .sync-dot {
-  background: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-  animation: pulse-dot 1.1s ease-in-out infinite;
-}
-
 @media (max-width: 560px) {
   .brand-name {
     font-size: 15px;
-  }
-  .sync-pill {
-    width: 36px;
-    padding: 0;
-    justify-content: center;
-  }
-  .sync-text,
-  .sync-pill svg {
-    display: none;
   }
 }
 

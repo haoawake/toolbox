@@ -3,9 +3,9 @@ name: 构建并发布工具库
 on:
   push:
     branches: [main]
-  # 每 3 小时重新抓一次 GitHub 数据（网页打开时也会实时检查新版本，这里只是兜底）
+  # 每天更新一次数据：UTC 19:00，即北京时间凌晨 3 点、美东下午 3 点
   schedule:
-    - cron: '23 */3 * * *'
+    - cron: '0 19 * * *'
   workflow_dispatch:
   # 其他仓库发版后可以通过 repository_dispatch 立刻触发刷新，见 README
   repository_dispatch:
