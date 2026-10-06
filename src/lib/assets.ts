@@ -60,9 +60,9 @@ function extOf(name: string): string {
   return i > 0 ? name.slice(i) : '';
 }
 
-/** 校验文件、签名、更新清单之类，不作为安装包推荐 */
+/** 校验文件、签名、更新清单、图片之类，不作为安装包推荐（图标文件名里常带 mac、win，会被认成安装包） */
 const AUX =
-  /\.(sha(1|224|256|384|512)(sum)?|md5|sig|asc|minisig|pem|crt|cert|blockmap|sbom|spdx|intoto\.jsonl|json|ya?ml|txt|sum)$|^(sha(1|256|512)sums?|checksums?|latest)([._-].*)?$/i;
+  /\.(sha(1|224|256|384|512)(sum)?|md5|sig|asc|minisig|pem|crt|cert|blockmap|sbom|spdx|intoto\.jsonl|json|ya?ml|txt|sum|png|jpe?g|gif|webp|svg|ico|icns)$|^(sha(1|256|512)sums?|checksums?|latest)([._-].*)?$/i;
 
 function kindOf(ext: string, name: string): Kind {
   switch (ext) {
