@@ -518,6 +518,142 @@
           }
         ]
       }
+    },
+    "linkedin-cn-translator": {
+      "displayName": "LinkedIn 中文翻译助手",
+      "tagline": "Chrome 上直接把 LinkedIn 个人档案里的英文正文翻成简体中文：支持动态加载和页面内切换，一键还原英文，鼠标悬停还能看原文。Windows 和 Mac 都能用。",
+      "icon": "assets/icon128.png",
+      "readme": "README.zh-CN.md",
+      "requirements": [
+        "Windows 10 / 11 或 macOS，安装了最新版 Chrome",
+        "使用时需要能访问 LinkedIn 和翻译服务",
+        "不需要 API Key；当前默认使用 Google Translate 的非正式网页端点"
+      ],
+      "install": {
+        "windows": [
+          {
+            "title": "解压扩展",
+            "body": "下载 `{asset}` 后右键 →「全部解压缩…」，放到一个以后不会删、不会移动的位置。"
+          },
+          {
+            "title": "打开 Chrome 扩展管理页",
+            "body": "在 Chrome 地址栏输入 `chrome://extensions/` 并回车，然后打开右上角「开发者模式」。"
+          },
+          {
+            "title": "加载扩展",
+            "body": "点「加载已解压的扩展程序」，选择刚才解压出来的 `linkedin-cn-translator` 文件夹。"
+          },
+          {
+            "title": "打开 LinkedIn 档案",
+            "body": "打开或刷新任意 `linkedin.com/in/...` 个人档案页。扩展会自动翻译正文；点浏览器工具栏里的扩展图标可以暂停、手动翻译或还原英文。",
+            "tip": "扩展目录以后不要移动；移动后 Chrome 会找不到它，需要重新加载。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "解压扩展",
+            "body": "在「下载」里双击 `{asset}` 解压，然后把 `linkedin-cn-translator` 文件夹移到一个长期保存的位置，例如「文稿」。"
+          },
+          {
+            "title": "打开 Chrome 扩展管理页",
+            "body": "在 Chrome 地址栏输入 `chrome://extensions/` 并回车，然后打开右上角「开发者模式」。"
+          },
+          {
+            "title": "加载扩展",
+            "body": "点「加载已解压的扩展程序」，选择刚才保存的 `linkedin-cn-translator` 文件夹。"
+          },
+          {
+            "title": "打开 LinkedIn 档案",
+            "body": "打开或刷新任意 `linkedin.com/in/...` 个人档案页。扩展会自动翻译正文；点 Chrome 工具栏里的扩展图标可以暂停、手动翻译或还原英文。"
+          }
+        ]
+      },
+      "troubleshooting": {
+        "windows": [
+          {
+            "title": "没有自动翻译",
+            "body": "确认当前网址是 `linkedin.com/in/...`，然后刷新一次页面；再点扩展图标确认「启用翻译」和「进入档案自动翻译」都已打开。"
+          },
+          {
+            "title": "部分段落没翻译",
+            "body": "LinkedIn 会动态加载内容。先展开「显示更多」，等一两秒；仍没翻译时点扩展里的「翻译当前档案」。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "重启 Chrome 后扩展不见了",
+            "body": "通常是原来的扩展文件夹被移动或删除了。重新到 `chrome://extensions/` 选择「加载已解压的扩展程序」即可。"
+          }
+        ]
+      }
+    },
+    "BluetoothPhoneAudio-OneClick": {
+      "displayName": "手机声音进电脑",
+      "tagline": "把手机声音送到电脑播放：Windows 10/11 用 Bluetooth A2DP Sink，双击后自动下载并校验接收组件；Mac 使用系统自带 AirPlay Receiver，把 iPhone / iPad 声音直接送到 Mac。",
+      "readme": "README.zh-CN.md",
+      "appName": "BluetoothPhoneAudio-OneClick",
+      "requirements": [
+        "Windows：Windows 10 2004（Build 19041）或更新版本 / Windows 11，并有可用蓝牙适配器",
+        "Mac：macOS 12 Monterey 或更新，并且机型支持 AirPlay to Mac",
+        "Mac 端主要接收 iPhone / iPad / 其他 AirPlay 发送端；macOS 不提供与 Windows 等价的公开 Bluetooth A2DP Sink 接口"
+      ],
+      "install": {
+        "windows": [
+          {
+            "title": "先把手机和电脑配对",
+            "body": "打开「设置 → 蓝牙和设备」，把手机与 Windows 配对。只配对还不会自动把手机声音送到电脑。"
+          },
+          {
+            "title": "解压并双击 Start.cmd",
+            "body": "下载 `{asset}` 后解压，打开 `BluetoothPhoneAudio-OneClick` 文件夹，双击 `Start.cmd`。第一次会从开源项目 AudioPlaybackConnector 的 GitHub Release 下载运行组件，并用 Release 提供的 SHA-256 digest 校验。"
+          },
+          {
+            "title": "连接手机",
+            "body": "程序启动后会出现在 Windows 右下角通知区域。点图标，找到已经配对的手机并连接，然后在手机上播放声音。"
+          },
+          {
+            "title": "没有声音时点一次「重连」",
+            "body": "Windows A2DP Sink 偶尔会出现“显示已连接但没有音频”的链路状态。对那台手机点一次「重连」通常即可恢复。",
+            "tip": "可以同时保留多个手机连接，但多个 A2DP 连接会共享蓝牙无线链路，稳定性取决于适配器、驱动和 2.4 GHz 干扰。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "打开手机音频工具",
+            "body": "下载并解压 `{asset}`，把 `BluetoothPhoneAudio-OneClick` 放进「应用程序」，第一次按住 Control 点它 →「打开」。"
+          },
+          {
+            "title": "打开 AirPlay Receiver",
+            "body": "应用会带你打开 AirPlay 设置。在「系统设置 → 通用 → AirDrop 与接力 / 连续互通」中打开「AirPlay 接收器」。macOS 12 Monterey 则在「系统偏好设置 → 共享」里打开 AirPlay Receiver。"
+          },
+          {
+            "title": "在 iPhone / iPad 选择这台 Mac",
+            "body": "手机先播放任意音频，再打开控制中心，点音频卡片里的 AirPlay / 输出按钮，选择这台 Mac。声音之后会从 Mac 当前的扬声器或耳机播放。"
+          }
+        ]
+      },
+      "troubleshooting": {
+        "windows": [
+          {
+            "title": "显示 Connected，但两边都没声音",
+            "body": "在托盘弹窗里对这台手机点一次「重连」；仍不行就退出程序、把 Windows 蓝牙关掉再打开，然后重新启动。"
+          },
+          {
+            "title": "列表里没有手机",
+            "body": "先确认手机已经在 Windows「蓝牙和设备」中完成配对，再重新打开托盘设备列表。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "iPhone 找不到这台 Mac",
+            "body": "确认 Mac 已打开「AirPlay Receiver」，两台设备的 Wi‑Fi 都已开启并处于兼容网络环境；使用同一个 Apple Account 时最省事。"
+          },
+          {
+            "title": "Android 怎么办",
+            "body": "Mac 端走的是 Apple AirPlay Receiver，不是蓝牙 A2DP Sink。Android 系统如果没有可用的 AirPlay 发送端，就不能靠本项目直接把系统声音投到 Mac。"
+          }
+        ]
+      }
     }
   }
 }
