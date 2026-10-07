@@ -566,6 +566,24 @@
             "title": "打开 LinkedIn 档案",
             "body": "打开或刷新任意 `linkedin.com/in/...` 个人档案页。扩展会自动翻译正文；点 Chrome 工具栏里的扩展图标可以暂停、手动翻译或还原英文。"
           }
+        ],
+        "source": [
+          {
+            "title": "解压源码",
+            "body": "点「下载源码」后把 ZIP 解压到一个以后不会移动的位置。解压后的仓库根目录里应该能直接看到 `manifest.json`。"
+          },
+          {
+            "title": "打开 Chrome 扩展管理页",
+            "body": "在 Chrome 地址栏输入 `chrome://extensions/`，打开右上角「开发者模式」。"
+          },
+          {
+            "title": "加载扩展",
+            "body": "点「加载已解压的扩展程序」，选择刚才解压出来、包含 `manifest.json` 的仓库根目录。"
+          },
+          {
+            "title": "打开 LinkedIn 档案",
+            "body": "打开或刷新任意 `linkedin.com/in/...` 页面。扩展会自动翻译档案正文；点工具栏里的扩展图标可以暂停、手动翻译或还原英文。"
+          }
         ]
       },
       "troubleshooting": {
@@ -629,6 +647,25 @@
           {
             "title": "在 iPhone / iPad 选择这台 Mac",
             "body": "手机先播放任意音频，再打开控制中心，点音频卡片里的 AirPlay / 输出按钮，选择这台 Mac。声音之后会从 Mac 当前的扬声器或耳机播放。"
+          }
+        ],
+        "source": [
+          {
+            "title": "解压源码",
+            "body": "点「下载源码」后把 ZIP 解压到任意固定位置。Windows 和 Mac 使用同一份源码，但底层接收方式不同。"
+          },
+          {
+            "title": "Windows：双击启动",
+            "body": "Windows 10 2004+ / Windows 11 直接进入 `windows` 文件夹，双击 `Start.cmd`。第一次会自动下载并校验最新版 AudioPlaybackConnector，然后打开蓝牙音频接收器。"
+          },
+          {
+            "title": "Mac：构建并打开小应用",
+            "body": "在仓库根目录打开「终端」，执行下面命令。它会用 macOS 自带的 `osacompile` 生成应用并打包；解压 `dist` 里的 Mac ZIP 后即可打开。",
+            "code": "chmod +x macos/build_app.sh\n./macos/build_app.sh"
+          },
+          {
+            "title": "Mac：打开 AirPlay Receiver",
+            "body": "运行生成的应用，点「打开 AirPlay 设置」，开启 AirPlay Receiver；之后在 iPhone / iPad 控制中心的音频输出中选择这台 Mac。"
           }
         ]
       },
