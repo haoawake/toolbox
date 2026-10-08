@@ -143,14 +143,15 @@
       }
     },
     "ipad-remote-desktop": {
-      "displayName": "iPad 远程桌面",
-      "tagline": "用原生 iPad App 或 Safari 远程操控 Windows / Mac，支持实体键盘直接操作、快捷键、触控板和远程画面；通过 Tailscale 安全连接，无需公网 IP。",
-      "appName": "iPad 远程桌面",
+      "displayName": "远程桌面（iPad / Android）",
+      "tagline": "从 Android 手机、iPad 原生 App 或 Safari 远程控制 Windows / Mac：实体键盘、快捷键、触控手势、外接鼠标；经 Tailscale 加密连接。安卓提供免费 APK，iPad 支持 IPA 侧载。",
+      "appName": "远程桌面",
       "requirements": [
         "被控的电脑：Windows 10（2004 及以上）/ 11，64 位；或 Apple 芯片的 Mac，macOS 11 或更新",
         "电脑和 iPad 都装好 Tailscale，并登录同一个账号",
         "不需要公网 IP，也不用改路由器；已经自带运行环境，不用另外装 Python",
-        "iPad 原生客户端 Beta：使用 GitHub Release 中的未签名 IPA，Windows 可通过 Sideloadly 以自己的 Apple ID 签名安装；或在 Mac 上用 Xcode 安装。网页端仍可作为备用。"
+        "iPad 原生客户端 Beta：使用 GitHub Release 中的未签名 IPA，Windows 可通过 Sideloadly 以自己的 Apple ID 签名安装；或在 Mac 上用 Xcode 安装。网页端仍可作为备用。",
+        "Android 原生版：从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/android-v0.1.0 下载免费 APK，手机直接安装；iPad 原生版：从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0 下载 IPA，用 Windows 上的 Sideloadly 或 Mac Xcode 签名安装。"
       ],
       "install": {
         "windows": [
@@ -171,6 +172,11 @@
             "title": "在 iPad 上安装原生 App 并连接",
             "body": "iPad 安装并启动 Tailscale，保持与电脑在同一 Tailnet。从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0 获取 iPad 原生客户端 Beta。未签名 IPA 不能直接点开安装：Windows 可用 Sideloadly（自己的 Apple ID 签名），Mac 可用 Xcode。安装后打开 App，填入电脑显示的 Tailscale 地址和密码，即可原生键盘控制。",
             "tip": "备用方案：仍可用 iPad Safari 打开同一个远程地址；iPadOS 保留的 ⌘Tab 等系统键需要在原生 App 里用「快捷键」面板发送。"
+          },
+          {
+            "title": "Android 安装（无需电脑端另装软件）",
+            "body": "使用同一台 Windows/Mac 远程桌面服务端。Android 手机/平板安装 Tailscale 并登录同一个账号；下载 https://github.com/haoawake/ipad-remote-desktop/releases/tag/android-v0.1.0 的 APK，在 Android 上允许此来源安装。打开原生 App 输入电脑端显示的 Tailscale 地址和登录密码。",
+            "tip": "安卓不需要 Sideloadly、Xcode 或 Apple ID；打开手机蓝牙/USB 实体键盘即可使用常规快捷键。系统保留的 Home/最近任务按键不支持劫持。"
           }
         ],
         "macos": [
@@ -195,6 +201,11 @@
             "title": "在 iPad 上安装原生 App 并连接",
             "body": "iPad 安装并启动 Tailscale，保持与电脑在同一 Tailnet。从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0 获取 iPad 原生客户端 Beta。未签名 IPA 不能直接点开安装：Windows 可用 Sideloadly（自己的 Apple ID 签名），Mac 可用 Xcode。安装后打开 App，填入电脑显示的 Tailscale 地址和密码，即可原生键盘控制。",
             "tip": "备用方案：仍可用 iPad Safari 打开同一个远程地址；iPadOS 保留的 ⌘Tab 等系统键需要在原生 App 里用「快捷键」面板发送。"
+          },
+          {
+            "title": "Android 安装（无需电脑端另装软件）",
+            "body": "使用同一台 Windows/Mac 远程桌面服务端。Android 手机/平板安装 Tailscale 并登录同一个账号；下载 https://github.com/haoawake/ipad-remote-desktop/releases/tag/android-v0.1.0 的 APK，在 Android 上允许此来源安装。打开原生 App 输入电脑端显示的 Tailscale 地址和登录密码。",
+            "tip": "安卓不需要 Sideloadly、Xcode 或 Apple ID；打开手机蓝牙/USB 实体键盘即可使用常规快捷键。系统保留的 Home/最近任务按键不支持劫持。"
           }
         ],
         "source": [
