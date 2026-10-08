@@ -144,12 +144,13 @@
     },
     "ipad-remote-desktop": {
       "displayName": "iPad 远程桌面",
-      "tagline": "在 iPad Safari 上远程查看并控制家里的 Windows 或 Mac：触控操作、外接实体键盘直接打字与快捷键、访问网页和文件传输。用 Tailscale 连接，不需要公网 IP；系统保留快捷键可通过快捷键面板发送。",
+      "tagline": "用原生 iPad App 或 Safari 远程操控 Windows / Mac，支持实体键盘直接操作、快捷键、触控板和远程画面；通过 Tailscale 安全连接，无需公网 IP。",
       "appName": "iPad 远程桌面",
       "requirements": [
         "被控的电脑：Windows 10（2004 及以上）/ 11，64 位；或 Apple 芯片的 Mac，macOS 11 或更新",
         "电脑和 iPad 都装好 Tailscale，并登录同一个账号",
-        "不需要公网 IP，也不用改路由器；已经自带运行环境，不用另外装 Python"
+        "不需要公网 IP，也不用改路由器；已经自带运行环境，不用另外装 Python",
+        "iPad 原生客户端 Beta：使用 GitHub Release 中的未签名 IPA，Windows 可通过 Sideloadly 以自己的 Apple ID 签名安装；或在 Mac 上用 Xcode 安装。网页端仍可作为备用。"
       ],
       "install": {
         "windows": [
@@ -167,8 +168,9 @@
             "tip": "想开机自动启动的话，双击 `开机自启-开启.bat`。全程不需要管理员权限。"
           },
           {
-            "title": "在 iPad 上连上它",
-            "body": "打开 Tailscale App 确认已连接，再用 Safari 打开窗口里显示的 Tailscale 地址，输入密码并勾选「记住 30 天」。最后点 Safari 的「分享 → 添加到主屏幕」，以后从图标打开就跟 App 一样。"
+            "title": "在 iPad 上安装原生 App 并连接",
+            "body": "iPad 安装并启动 Tailscale，保持与电脑在同一 Tailnet。从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0 获取 iPad 原生客户端 Beta。未签名 IPA 不能直接点开安装：Windows 可用 Sideloadly（自己的 Apple ID 签名），Mac 可用 Xcode。安装后打开 App，填入电脑显示的 Tailscale 地址和密码，即可原生键盘控制。",
+            "tip": "备用方案：仍可用 iPad Safari 打开同一个远程地址；iPadOS 保留的 ⌘Tab 等系统键需要在原生 App 里用「快捷键」面板发送。"
           }
         ],
         "macos": [
@@ -190,9 +192,9 @@
             "body": "Mac 和 iPad 都安装 Tailscale 并登录同一个账号。第一次运行时程序还会自动下载 cloudflared（约 20 MB），作为备用通道。"
           },
           {
-            "title": "在 iPad 上连上它",
-            "body": "程序窗口里会显示登录密码和访问地址。iPad 上打开 Tailscale App 确认已连接，用 Safari 打开 Tailscale 地址、输入密码，再点「分享 → 添加到主屏幕」。",
-            "tip": "可以勾选「登录 Mac 后自动启动」。关掉窗口服务照常运行，按 ⌘Q 或点「停止并退出」才会停止。"
+            "title": "在 iPad 上安装原生 App 并连接",
+            "body": "iPad 安装并启动 Tailscale，保持与电脑在同一 Tailnet。从 https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0 获取 iPad 原生客户端 Beta。未签名 IPA 不能直接点开安装：Windows 可用 Sideloadly（自己的 Apple ID 签名），Mac 可用 Xcode。安装后打开 App，填入电脑显示的 Tailscale 地址和密码，即可原生键盘控制。",
+            "tip": "备用方案：仍可用 iPad Safari 打开同一个远程地址；iPadOS 保留的 ⌘Tab 等系统键需要在原生 App 里用「快捷键」面板发送。"
           }
         ],
         "source": [
