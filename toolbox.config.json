@@ -260,7 +260,7 @@
     },
     "career-radar": {
       "displayName": "Career Radar",
-      "tagline": "自托管的求职工作台：直接从 672 家雇主的官方招聘系统（Workday、Oracle、Greenhouse、Ashby 等）聚合约 14.5 万个美国科技岗位，标出职级和签证担保信号，还附带 ATS 友好的简历生成器。",
+      "tagline": "自托管求职工作台：聚合雇主官方招聘岗位、识别职级与签证担保信号，并提供 ATS 简历编辑器。Windows 与 macOS 提供本地启动包（需 Node.js 22.13+，浏览器访问）。",
       "requirements": [
         "Windows 10 / 11、macOS（Apple 芯片或 Intel）或 Linux",
         "Node.js 22.13 或更新的版本（nodejs.org，选 LTS 版）",
@@ -288,7 +288,47 @@
           },
           {
             "title": "打开网页",
-            "body": "等终端里出现 `http://localhost:3000`，在浏览器里打开这个地址。第一次打开会自动从各家雇主的招聘系统拉取岗位，要等一会儿。"
+            "body": "等终端显示本地访问地址后，在浏览器里打开实际地址（通常为 `http://localhost:5173`）。第一次打开会自动从各家雇主的招聘系统拉取岗位，要等一会儿。"
+          }
+        ],
+        "windows": [
+          {
+            "title": "安装 Node.js 22.13 或更新版本",
+            "body": "访问 nodejs.org 安装 Node.js 22.13 或更新版本。Career Radar 是基于本地 Web 服务的工具，下载包不是原生 EXE。"
+          },
+          {
+            "title": "解压 Windows 启动包",
+            "body": "下载 `{asset}`，右键 →「全部解压缩…」，将 `CareerRadar` 文件夹放到长期保存的位置（例如 `D:\\Apps\\CareerRadar`）。不要直接在 ZIP 里启动。"
+          },
+          {
+            "title": "双击 Start-Career-Radar.cmd",
+            "body": "进入 `CareerRadar` 文件夹，双击 `Start-Career-Radar.cmd`。第一次运行会自动执行 npm 依赖安装，并初始化本地数据库。",
+            "tip": "首次使用需要联网，之后更新岗位也需要网络；命令窗口运行期间请保持打开。"
+          },
+          {
+            "title": "用浏览器打开求职工作台",
+            "body": "终端会输出本地访问地址（一般是 `http://localhost:5173`，以实际输出为准）。复制到浏览器打开。退出时按 Ctrl+C。",
+            "tip": "求职记录和简历等本地数据位于 `CareerRadar/.wrangler/state`，升级时先备份此目录。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "安装 Node.js 22.13 或更新版本",
+            "body": "从 nodejs.org 安装对应 Mac 芯片（Apple Silicon / Intel）的 Node.js 22.13 或更新版本。Career Radar 是本地 Web 应用启动包，不是原生 DMG。"
+          },
+          {
+            "title": "解压 macOS 启动包",
+            "body": "下载 `{asset}` 并双击解压，把 `CareerRadar` 文件夹移动到「文稿」或其他长期保存的位置。"
+          },
+          {
+            "title": "运行 Start-Career-Radar.command",
+            "body": "双击 `Start-Career-Radar.command`。若系统阻止运行，可以在此文件夹打开终端，执行 `zsh Start-Career-Radar.command`。首次运行会自动安装 npm 依赖并初始化 D1 本地数据库。",
+            "tip": "终端窗口需要保持打开；第一次运行需要联网。"
+          },
+          {
+            "title": "在浏览器里访问",
+            "body": "用 Safari 或 Chrome 打开终端显示的本地地址（通常为 `http://localhost:5173`）。结束时在终端按 Control+C。",
+            "tip": "本地数据存放在 `CareerRadar/.wrangler/state`，更新前请先备份。"
           }
         ]
       },
@@ -302,8 +342,25 @@
             "title": "提示 Node.js 版本太低",
             "body": "需要 22.13 或更新的版本。到 nodejs.org 重新下载 LTS 版安装。"
           }
+        ],
+        "windows": [
+          {
+            "title": "双击后提示找不到 node/npm",
+            "body": "先安装 Node.js 22.13+，再重新打开 `Start-Career-Radar.cmd`。"
+          },
+          {
+            "title": "下载依赖失败或端口被占用",
+            "body": "确认网络可访问 npm 软件包仓库；若端口已被占用，关闭之前启动的 Career Radar 服务，再重新双击。"
+          }
+        ],
+        "macos": [
+          {
+            "title": "提示应用无法打开或脚本无权限",
+            "body": "在解压目录打开「终端」，执行 `zsh Start-Career-Radar.command`；如果找不到 Node.js，请重新安装 nodejs.org 提供的 Mac 版本。"
+          }
         ]
-      }
+      },
+      "appName": "Career Radar"
     },
     "lan-transfer": {
       "displayName": "文件传输助手",
@@ -624,7 +681,7 @@
           },
           {
             "title": "解压并双击 Start.cmd",
-            "body": "下载 `{asset}` 后解压，打开 `AudioBridge` 文件夹，双击 `Start.cmd`。第一次会自动下载并校验最新版 AudioPlaybackConnector。"
+            "body": "下载 `{asset}` 后解压，打开 `AudioBridge` 文件夹，再进入 `windows` 子文件夹并双击 `Start.cmd`。第一次会自动下载并校验最新版 AudioPlaybackConnector。"
           },
           {
             "title": "连接手机",
