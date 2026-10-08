@@ -156,6 +156,28 @@ function ProjectView({ project: p, routeTab }: { project: ViewProject; routeTab:
             <GithubIcon size={16} />
             GitHub 仓库
           </a>
+          {p.key === 'ipad-remote-desktop' && (
+            <>
+              <a
+                className="btn"
+                href="https://github.com/haoawake/ipad-remote-desktop/releases/tag/android-v0.1.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download size={16} />
+                Android APK（免费）
+              </a>
+              <a
+                className="btn"
+                href="https://github.com/haoawake/ipad-remote-desktop/releases/tag/ipad-v0.1.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download size={16} />
+                iPad App（IPA）
+              </a>
+            </>
+          )}
         </div>
       </header>
 
