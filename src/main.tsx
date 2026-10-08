@@ -6,6 +6,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/layout.css';
 import './styles/home.css';
+import './styles/launcher.css';
 import './styles/project.css';
 import './styles/markdown.css';
 import App from './App';

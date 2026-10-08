@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import type { CatalogState } from './components/Catalog';
+import { useEffect } from 'react';
 import { Footer } from './components/Footer';
 import { ToastProvider } from './components/Toast';
 import { TopBar } from './components/TopBar';
@@ -14,10 +13,9 @@ export default function App() {
   const platform = usePlatformDetection();
   const route = useRoute();
   const { loading, owner, projects, data, selfRepo } = useToolbox();
-  // 放在这里而不是首页里，从详情页返回时搜索和筛选还在
-  const [catalog, setCatalog] = useState<CatalogState>({ filter: 'all', query: '', sort: 'recommended' });
-
+  const isHome = route.page === 'home';
   const current = route.page === 'project' ? projects.find((p) => p.key.toLowerCase() === route.key.toLowerCase()) : null;
+
   useEffect(() => {
     document.title = current ? `${current.displayName} · ${config.site.title}` : config.site.title;
   }, [current]);
@@ -25,7 +23,6 @@ export default function App() {
   return (
     <PlatformContext value={platform}>
       <ToastProvider>
-        {/* 玻璃需要身后有颜色：几团很淡的彩色光，固定在页面背后缓慢漂移 */}
         <div className="backdrop" aria-hidden="true">
           <span className="blob b1" />
           <span className="blob b2" />
@@ -33,22 +30,19 @@ export default function App() {
           <span className="blob b4" />
         </div>
         <TopBar owner={owner} />
-        <div id="main">
-          {route.page === 'home' ? (
+        <div id="main" className={isHome ? 'is-home' : undefined}>
+          {isHome ? (
             <Home
-              owner={owner}
               projects={projects}
               loading={loading}
               failed={data.state === 'error'}
               onRetry={() => location.reload()}
-              catalog={catalog}
-              onCatalog={setCatalog}
             />
           ) : (
             <ProjectPage projectKey={route.key} tab={route.tab} projects={projects} loading={loading} />
           )}
         </div>
-        <Footer owner={owner} data={data} selfRepo={selfRepo} />
+        {!isHome && <Footer owner={owner} data={data} selfRepo={selfRepo} />}
       </ToastProvider>
     </PlatformContext>
   );
